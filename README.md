@@ -32,3 +32,8 @@ alternatively download the requirements.txt file and execute
 
 ## License
 This code is released under the MIT License. See the LICENSE file for more details.
+
+
+
+questions, comments, concerns,bugs? Get ahold of me at austinvarga1 at protonmail.com.
+Cheers!
