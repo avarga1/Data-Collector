@@ -30,5 +30,5 @@ Copy code
 alternatively download the requirements.txt file and execute
 `pip install -r requirements.txt -t /path/to/target/directory`
 
-# License
-This code is released under the MIT License. See the LICENSE(LICENSE) file for more details.
+## License
+This code is released under the MIT License. See the LICENSE file for more details.
