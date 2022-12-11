@@ -1,8 +1,7 @@
+# -*- coding: utf-8 -*-
 """
 @author: Austin Varga
 """
-
-
 
 # Import the necessary libraries
 import pandas as pd
@@ -16,7 +15,7 @@ from tensorflow import keras
 
 # num days specifies how many instances of timeframe data will be collected
 # it must be formated as a string with f"{input_number}D"
-num_days = '10D'
+num_days = '1000D'
 # Timeframe data to be collected
 timeframe = '1D'
 
@@ -73,6 +72,7 @@ def get_target(file_name):
         target_y = yf.download(tickers = line, period = num_days, interval= timeframe)
         # Remove the last row of the data
         target_y = target_y.drop(target_y.index[1])
+        target_y = target_y.drop(target_y.index[1])
         # Get the 'Close' column of the data
         target_y = target_y['Close']
         # Convert the Series to a NumPy array
@@ -109,9 +109,6 @@ np.savetxt('x_train.csv', x_train, delimiter=',')
 np.savetxt('x_test.csv', x_test, delimiter=',')
 np.savetxt('y_train.csv', y_train, delimiter=',')
 np.savetxt('y_test.csv', y_test, delimiter=',')
-
-
-
 
 
 
