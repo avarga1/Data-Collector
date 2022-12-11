@@ -9,6 +9,7 @@ To use this code, you will need to provide the following files within the same d
 pairs.txt: a text file containing a list of stock tickers, one per line.
 target.txt: a text file containing a single stock ticker.
 You can then run the code using the following command:
+see attached pairs.txt and target.txt files for their example of their formatting.
 
 Copy code
 `python data_grab.py`
@@ -30,4 +31,4 @@ alternatively download the requirements.txt file and execute
 `pip install -r requirements.txt -t /path/to/target/directory`
 
 # License
-This code is released under the MIT License. See the LICENSE file for more details.
+This code is released under the MIT License. See the LICENSE(LICENSE) file for more details.
