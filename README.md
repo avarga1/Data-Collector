@@ -1,19 +1,32 @@
-# Data-Collector
-A script that gathers financial data from the web and splits it into train and test sets
-This script is dynamic and will handle as many tickers as you desire so long as format is correct.
-Current version gathers high, low, and close. (vol has been removed as yfinance often does not have data on this, open has been removed as well to 
-eliminate redundent dat, close of t-1 == open of t.
-The data is shifted so that len x and len y are equal, but if x[0] is yesterdays data, y[0] is todays, so that x_train is predicting y truth of tomorrow
+Stock Price Prediction
+This code can be used to grab clean data from the web to be used for ML,
+data is shited so if x_train[0] = yesterdays data, y_train[0] is todays data, 
+please see attached txt files for formatting example. This script is dynamic and should handle as many tickers and days as desired.
 
 
-vir_target is a pandas series which keeps the date attached for reference.
+Requirements
+The following Python modules are required to run this code:
 
-inside of your directory you need 2 txt files
+pandas
+numpy
+yfinance
+sklearn
+tensorflow
+keras
+Usage
+To use this code, follow these steps:
 
-1 - pairs.txt inside of this file you can add currency pairs ie. USDJPY which must be formated as USDJPY=X 
-2 - target.txt inside of this file include 1 ticker that you wish to turn into your y_data
-    reference yahoo finance for ticker, ie. microsoft = MSFT, Dow jones 30 is ^DJI, formats vary so be mindful of this.
-    it is important to format the txt files correctly. do not add quotations and max 1 ticker per line.
-    the script is dynamic and should handle any amount of tickers you desire while only changing the txt file, see attached for examples
-    
-dependancies 
+Install the required modules using pip or another package manager.
+Place your list of ticker symbols (x_train) in a file named pairs.txt in the same directory as the code.
+Place the symbol of the target stock (y_train) in a file named target.txt in the same directory as the code.
+Run the code using python data_grabber.py
+The code will download the ticker from Yahoo Finance, clean it, and save it to CSV files. with a split of x_train, x_test, y_train, y_test with an 80/20 random split
+
+Customization
+You can customize the behavior of the code by changing the following variables at the top of the stock_prediction.py file:
+
+num_days: The number of days of stock data to download. This must be formatted as a string with f"{input_number}D" 
+timeframe: The time frame of the stock data to download. This must be a string, such as "1D" for daily 
+
+
+if you have any questions, concerns or wish to collab, you can get me at austinvarga1 at protonmail.com!
