@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Sun Dec 11 05:44:45 2022
-
 @author: Austin Varga
 """
+
+
 
 # Import the necessary libraries
 import pandas as pd
@@ -17,7 +16,7 @@ from tensorflow import keras
 
 # num days specifies how many instances of timeframe data will be collected
 # it must be formated as a string with f"{input_number}D"
-num_days = '2000D'
+num_days = '10D'
 # Timeframe data to be collected
 timeframe = '1D'
 
@@ -51,7 +50,7 @@ def get_fx(file_name):
           data = data.drop(date, errors="ignore")
       
       # Remove the 'Adj Close' and 'Volume' columns
-      data = data.drop(columns=['Adj Close', 'Volume'])
+      data = data.drop(columns=['Adj Close', 'Volume', 'Close'])
       # Remove the last row of the data
       data = data.drop(data.index[-1])
       # Convert the DataFrame to a NumPy array
@@ -73,7 +72,6 @@ def get_target(file_name):
         # Get the data from Yahoo Finance
         target_y = yf.download(tickers = line, period = num_days, interval= timeframe)
         # Remove the last row of the data
-        target_y = target_y.drop(target_y.index[1])
         target_y = target_y.drop(target_y.index[1])
         # Get the 'Close' column of the data
         target_y = target_y['Close']
@@ -100,7 +98,7 @@ vir_target, target = get_target('target.txt')
 
 # Merge the arrays in the fx dictionary
 merged = merge_arrays(fx)
-
+merged = np.unique(merged,axis=1)
 
 x_train, x_test = train_test_split(merged, test_size=0.2)
 y_train, y_test = train_test_split(target,test_size=0.20)
@@ -111,8 +109,6 @@ np.savetxt('x_train.csv', x_train, delimiter=',')
 np.savetxt('x_test.csv', x_test, delimiter=',')
 np.savetxt('y_train.csv', y_train, delimiter=',')
 np.savetxt('y_test.csv', y_test, delimiter=',')
-
-
 
 
 
